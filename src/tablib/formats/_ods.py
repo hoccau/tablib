@@ -62,6 +62,8 @@ class ODSFormat:
             for j, col in enumerate(row):
                 if isinstance(col, numbers.Number):
                     cell = table.TableCell(valuetype="float", value=col)
+                elif col is None:
+                    cell = table.TableCell(value=None)
                 else:
                     cell = table.TableCell(valuetype="string")
                     cell.addElement(text.P(text=str(col), stylename=style))
